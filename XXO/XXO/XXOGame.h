@@ -8,16 +8,44 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum player {
+    blank = 0,
+    playerX = 1,
+    playerO = 2,
+    Tie = 3
+} player;
+
+typedef enum boardSpace {
+    upperLeft   = 0,
+    upperMid    = 1,
+    upperRight  = 2,
+    centerLeft  = 3,
+    centerMid   = 4,
+    centerRight = 5,
+    lowerLeft  = 6,
+    lowerMid   = 7,
+    lowerRight = 8
+} boardSpace;
+
+
 @protocol XXOGameDelegate <NSObject>
+#pragma  mark Delegate Callbacks
+- (void)player:(player)player didPlayAtSpace:(boardSpace)spaceNumber;
+- (void)gameDidReset;
+- (void)gameDidLoad;
+- (void)gameOverWithWinner:(player)winningPlayer;
 @optional
-
-
 @end
 
+#pragma mark -
 @interface XXOGame : NSObject
 
-@property (strong, nonatomic)   NSArray *board;
-@property (assign)              NSNumber *currentPlayer; // 0 for Os, 1 for X.
+#pragma mark Game Data
+@property (strong, readonly, nonatomic)   NSArray *board;
+@property (assign)              player currentPlayer;
 @property (weak, nonatomic)     id<XXOGameDelegate> delegate;
 
+#pragma  mark Game Actions
+- (player)playAtSpace:(boardSpace)spaceNumber;
+- (void)resetGame;
 @end
