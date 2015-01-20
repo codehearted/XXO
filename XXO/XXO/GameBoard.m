@@ -14,6 +14,7 @@
 SKTexture *textureX;
 SKTexture *textureO;
 SKTexture *textureBlank;
+NSMutableArray *stdBoardPosition;
 
 -(void)didMoveToView:(SKView *)view {
     self.board = @[ [self childNodeWithName:@"0"],
@@ -27,7 +28,19 @@ SKTexture *textureBlank;
                     [self childNodeWithName:@"6"],
                     [self childNodeWithName:@"7"],
                     [self childNodeWithName:@"8"]];
-    
+    stdBoardPosition = [@[] mutableCopy];
+    for (int i=0;i<9;i++) {
+        [stdBoardPosition addObject:
+        [NSValue valueWithCGPoint:CGPointMake(((SKSpriteNode*)self.board[i]).position.x,
+                                              ((SKSpriteNode*)self.board[i]).position.y)]];
+    }
+    for (SKSpriteNode *node in self.board) {
+        node.physicsBody = [SKPhysicsBody bodyWithTexture:node.texture alphaThreshold:0.2 size:node.size];
+        if (node.physicsBody) {
+            node.physicsBody.affectedByGravity = NO;
+        }
+    }
+
     textureX = [SKTexture textureWithImageNamed:@"X"];
     textureO = [SKTexture textureWithImageNamed:@"O"];
     textureBlank = [SKTexture textureWithImageNamed:@"blank"];
@@ -37,6 +50,11 @@ SKTexture *textureBlank;
 {
     for (boardSpace space = 0; space < 9; space++) {
         [self setBoardSpace:space to:blank];
+        ((SKSpriteNode*)self.board[space]).position = [stdBoardPosition[space] CGPointValue];
+        //        [self.board[space] runAction:[SKAction moveTo:[stdBoardPosition[space] CGPointValue] duration:0.8]];
+        [((SKSpriteNode*)self.board[space]) runAction:[SKAction rotateToAngle:0 duration:0.2]];
+    
+        
     }
 }
 
@@ -67,15 +85,26 @@ SKTexture *textureBlank;
 -(void)setBoardSpace:(boardSpace)spaceNum to:(player)playerValue
 {
     SKSpriteNode *theSpace = self.board[spaceNum];
-    
+    //    theSpace.physicsBody.affectedByGravity = NO;
+    theSpace.physicsBody = nil;
     if (playerValue == playerO) {
         [theSpace setTexture:textureO];
-        [theSpace runAction:[SKAction sequence:@[[SKAction scaleBy:5 duration:0.00], [SKAction scaleBy:0.2 duration:0.6]]]];
+        [theSpace runAction:[SKAction sequence:@[[SKAction scaleBy:5 duration:0.001], [SKAction scaleBy:0.2 duration:0.6]]]];
+
     } else if (playerValue == playerX) {
         [theSpace setTexture:textureX];
-        [theSpace runAction:[SKAction sequence:@[[SKAction scaleBy:5 duration:0.00], [SKAction scaleBy:0.2 duration:0.6]]]];
+        [theSpace runAction:[SKAction sequence:@[[SKAction scaleBy:5 duration:0.001], [SKAction scaleBy:0.2 duration:0.6]]]];
     } else {
         [theSpace setTexture:textureBlank];
+    }
+    
+}
+
+-(void)destroyBoard
+{
+    for (SKSpriteNode *node in self.board) {
+        node.physicsBody = [SKPhysicsBody bodyWithTexture:node.texture alphaThreshold:0.2 size:node.size];
+        node.physicsBody.affectedByGravity = YES;
     }
     
 }
@@ -84,4 +113,6 @@ SKTexture *textureBlank;
 
 }
 
+
 @end
+

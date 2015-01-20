@@ -30,11 +30,13 @@
 {
     if (spaceNumber >= 0 && spaceNumber <= 8 && [self.board[spaceNumber] integerValue] == blank && self.currentPlayer != blank) {
         if (self.currentPlayer == playerX) {
-            self.board[spaceNumber] = [NSNumber numberWithInt:playerX];
+            //            self.board[spaceNumber] = [NSNumber numberWithInt:playerX];
+            [self.board setObject:[NSNumber numberWithInt:playerX] atIndexedSubscript:spaceNumber];
             self.currentPlayer = playerO;
             [self.delegate player:playerX didPlayAtSpace:spaceNumber];
         } else if (self.currentPlayer == playerO) {
-            self.board[spaceNumber] = [NSNumber numberWithInt:playerO];
+            //self.board[spaceNumber] = [NSNumber numberWithInt:playerO];
+            [self.board setObject:[NSNumber numberWithInt:playerO] atIndexedSubscript:spaceNumber];
             self.currentPlayer = playerX;
             [self.delegate player:playerO didPlayAtSpace:spaceNumber];
         }
@@ -51,7 +53,9 @@
 - (player)checkForWin
 {
     player winningPlayer = blank;
- 
+    if (!self.board) {
+        return winningPlayer;
+    }
     if ([self.board[upperLeft] isEqualToNumber: self.board[upperMid]] &&
         [self.board[upperLeft] isEqualToNumber:self.board[upperRight]] &&
         ![self.board[upperLeft] isEqualToNumber:[NSNumber numberWithInt:blank]]) {
@@ -102,7 +106,8 @@
         // Diagonal Upper Right <-> Lower Left Winner
         winningPlayer = (player)[self.board[upperRight] integerValue];
     } else
-    if (![self.board[upperLeft] isEqualToNumber:[NSNumber numberWithInt:blank]] &&
+    if (self.board &&
+        ![self.board[upperLeft] isEqualToNumber:[NSNumber numberWithInt:blank]] &&
         ![self.board[upperMid] isEqualToNumber:[NSNumber numberWithInt:blank]] &&
         ![self.board[upperRight] isEqualToNumber:[NSNumber numberWithInt:blank]] &&
         ![self.board[centerLeft] isEqualToNumber:[NSNumber numberWithInt:blank]] &&
@@ -113,6 +118,8 @@
         ![self.board[lowerRight] isEqualToNumber:[NSNumber numberWithInt:blank]]) {
         // Tie
         winningPlayer = Tie;
+    } else {
+        winningPlayer = winningPlayer;
     }
     return winningPlayer;
 }
@@ -132,12 +139,16 @@
 - (void)saveGame
 {
     // Save game data to app storage
+    [[NSUserDefaults standardUserDefaults] setObject:self.board forKey:@"board"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.currentPlayer] forKey:@"currrentPlayer"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 
 }
 
 - (void)loadGame
 {
     // Load game data from app storage
+    //   self.board = [[NSUserDefaults standardUserDefaults] objectForKey:@"board"];
     
     if (self.delegate) {
         [self.delegate gameDidLoad];
@@ -155,5 +166,10 @@
     return [self.board copy];
 }
 */
+-(void)dealloc
+{
+    //    [self saveGame];
+}
+
 
 @end
