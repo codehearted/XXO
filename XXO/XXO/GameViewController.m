@@ -8,6 +8,7 @@
 
 #import "GameViewController.h"
 #import "GameScene.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation SKScene (Unarchive)
 
@@ -32,12 +33,15 @@
 #pragma mark -
 
 @implementation GameViewController : UIViewController
+AVAudioPlayer *audioPlayerObj;
+
 #pragma mark ViewController Methods
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     self.showDebugInfo = NO;
+    self.soundsEnabled = NO;
     
     // Configure the view.
     SKView * skView = (SKView *)self.view;
@@ -63,6 +67,7 @@
     // Load Game Model
     self.game = [[XXOGame alloc] initWithDelegate:self];
     [self.game loadGame];
+    self.soundsEnabled = YES;
     
 }
 
@@ -95,14 +100,47 @@
 
 - (void)currentPlayerPlayedAtSpace:(boardSpace)spaceNumber
 {
-    [self.game playAtSpace:spaceNumber];
+    if (self.game.currentPlayer != blank) {
+        [self.game playAtSpace:spaceNumber];
+    }
+}
+
+- (void)playSoundWithOfThisFile:(NSString*)fileNameWithExtension {
+    if (self.soundsEnabled) {
+        NSString *filePath;
+        
+        filePath= [NSString stringWithFormat:@"%@", [[NSBundle mainBundle] resourcePath]];
+        
+        if(!audioPlayerObj)
+            audioPlayerObj = [AVAudioPlayer alloc];
+        
+        NSURL *acutualFilePath= [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@",filePath,fileNameWithExtension]];
+        
+        NSError *error;
+        
+        audioPlayerObj = [audioPlayerObj initWithContentsOfURL:acutualFilePath error:&error];
+        
+        [audioPlayerObj play];
+    }
 }
 
 #pragma mark Game Delegate Callbacks
+
 - (void)player:(player)player didPlayAtSpace:(boardSpace)spaceNumber
 {
     [((GameScene*)((SKView*)self.view).scene) setBoardSpace:spaceNumber to:player];
         self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",(self.game.currentPlayer==playerO ? @"O" : @"X")];
+
+    switch (arc4random()%2) {
+        case 0:
+            [self playSoundWithOfThisFile:@"Hit_Hurt12.wav"];
+            break;
+        case 1:
+            [self playSoundWithOfThisFile:@"Hit_Hurt13.wav"];
+            break;
+        default:
+            break;
+    }
 
 }
 
@@ -111,6 +149,8 @@
     [self gameDidLoad];
     
     [self.scene resetBoard];
+    [self playSoundWithOfThisFile:@"Reset58.wav"];
+
     
 }
 
@@ -128,8 +168,10 @@
 {
     if (winningPlayer == Tie) {
         self.turnIndicator.text = [NSString stringWithFormat:@"Tie, Everyone Wins/Loses!"];        
+        [self playSoundWithOfThisFile:@"Win60_louder.wav"];
     } else {
         self.turnIndicator.text = [NSString stringWithFormat:@"%@ Wins!",(winningPlayer==playerO ? @"O" : @"X")];
+        [self playSoundWithOfThisFile:@"Win23.wav"];
     }
     self.game.currentPlayer = blank;
 }

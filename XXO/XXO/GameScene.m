@@ -47,12 +47,12 @@ SKTexture *textureBlank;
         CGPoint location = [touch locationInNode:self];
         SKSpriteNode *sprite = (SKSpriteNode*)[self nodeAtPoint:location];
 
-        if (! [sprite isKindOfClass:[SKSpriteNode class]]) {
+        if (! [sprite isKindOfClass:[SKSpriteNode class]] && sprite.name.length != 1) {
             // Not a sprite
             return;
         }
 
-        if (sprite.texture == textureO || sprite.texture == textureX) {
+        if (sprite.texture != textureBlank) {
             // Already filled in
             return;
         }

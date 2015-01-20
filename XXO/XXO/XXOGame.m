@@ -28,10 +28,9 @@
 #pragma mark Game Actions
 - (player)playAtSpace:(boardSpace)spaceNumber
 {
-    if (spaceNumber >= 0 && spaceNumber <= 8) {
+    if (spaceNumber >= 0 && spaceNumber <= 8 && [self.board[spaceNumber] integerValue] == blank && self.currentPlayer != blank) {
         if (self.currentPlayer == playerX) {
             self.board[spaceNumber] = [NSNumber numberWithInt:playerX];
-
             self.currentPlayer = playerO;
             [self.delegate player:playerX didPlayAtSpace:spaceNumber];
         } else if (self.currentPlayer == playerO) {

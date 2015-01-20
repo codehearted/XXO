@@ -18,6 +18,11 @@
 		DA39D9681A6D535E0077B765 /* XXOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D9671A6D535E0077B765 /* XXOTests.m */; };
 		DA39D9781A6D676C0077B765 /* XXOGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D9771A6D676C0077B765 /* XXOGame.m */; };
 		DA39D9791A6D676C0077B765 /* XXOGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D9771A6D676C0077B765 /* XXOGame.m */; };
+		DA534FEF1A6DFBF70002E944 /* Hit_Hurt13.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA534FEE1A6DFBF70002E944 /* Hit_Hurt13.wav */; };
+		DA534FF11A6DFEC80002E944 /* Win23.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA534FF01A6DFEC80002E944 /* Win23.wav */; };
+		DA534FF31A6E06920002E944 /* Win60_louder.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA534FF21A6E06920002E944 /* Win60_louder.wav */; };
+		DA534FF51A6E082F0002E944 /* Reset58.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA534FF41A6E082F0002E944 /* Reset58.wav */; };
+		DA534FF71A6E0AD90002E944 /* Hit_Hurt12.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA534FF61A6E0AD90002E944 /* Hit_Hurt12.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,11 @@
 		DA39D9671A6D535E0077B765 /* XXOTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXOTests.m; sourceTree = "<group>"; };
 		DA39D9761A6D676C0077B765 /* XXOGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXOGame.h; sourceTree = "<group>"; };
 		DA39D9771A6D676C0077B765 /* XXOGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXOGame.m; sourceTree = "<group>"; };
+		DA534FEE1A6DFBF70002E944 /* Hit_Hurt13.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Hit_Hurt13.wav; sourceTree = "<group>"; };
+		DA534FF01A6DFEC80002E944 /* Win23.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Win23.wav; sourceTree = "<group>"; };
+		DA534FF21A6E06920002E944 /* Win60_louder.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Win60_louder.wav; sourceTree = "<group>"; };
+		DA534FF41A6E082F0002E944 /* Reset58.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Reset58.wav; sourceTree = "<group>"; };
+		DA534FF61A6E0AD90002E944 /* Hit_Hurt12.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Hit_Hurt12.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +109,11 @@
 				DA39D9531A6D535E0077B765 /* GameViewController.m */,
 				DA39D9761A6D676C0077B765 /* XXOGame.h */,
 				DA39D9771A6D676C0077B765 /* XXOGame.m */,
+				DA534FF61A6E0AD90002E944 /* Hit_Hurt12.wav */,
+				DA534FEE1A6DFBF70002E944 /* Hit_Hurt13.wav */,
+				DA534FF01A6DFEC80002E944 /* Win23.wav */,
+				DA534FF21A6E06920002E944 /* Win60_louder.wav */,
+				DA534FF41A6E082F0002E944 /* Reset58.wav */,
 				DA39D9551A6D535E0077B765 /* Main.storyboard */,
 				DA39D9581A6D535E0077B765 /* Images.xcassets */,
 				DA39D95A1A6D535E0077B765 /* LaunchScreen.xib */,
@@ -213,10 +228,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA534FF31A6E06920002E944 /* Win60_louder.wav in Resources */,
+				DA534FF11A6DFEC80002E944 /* Win23.wav in Resources */,
+				DA534FEF1A6DFBF70002E944 /* Hit_Hurt13.wav in Resources */,
+				DA534FF71A6E0AD90002E944 /* Hit_Hurt12.wav in Resources */,
 				DA39D95C1A6D535E0077B765 /* LaunchScreen.xib in Resources */,
 				DA39D9591A6D535E0077B765 /* Images.xcassets in Resources */,
 				DA39D9511A6D535E0077B765 /* GameScene.sks in Resources */,
 				DA39D9571A6D535E0077B765 /* Main.storyboard in Resources */,
+				DA534FF51A6E082F0002E944 /* Reset58.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
