@@ -46,7 +46,7 @@
     if (winningPlayer != blank) {
         [self.delegate gameOverWithWinner:winningPlayer];
     }
-    
+    [self saveGame];
     return winningPlayer;
 }
 
@@ -142,33 +142,28 @@
     [[NSUserDefaults standardUserDefaults] setObject:self.board forKey:@"board"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.currentPlayer] forKey:@"currrentPlayer"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-
 }
 
 - (void)loadGame
 {
     // Load game data from app storage
-    //   self.board = [[NSUserDefaults standardUserDefaults] objectForKey:@"board"];
-    
-    if (self.delegate) {
-        [self.delegate gameDidLoad];
+    NSMutableArray *pre_board = [[NSUserDefaults standardUserDefaults] objectForKey:@"board"];
+    if ([pre_board isKindOfClass:[NSArray class]] && pre_board.count == 9) {
+        self.board = [pre_board mutableCopy];
+        self.currentPlayer = [[[NSUserDefaults standardUserDefaults] objectForKey:@"currrentPlayer"] integerValue];
+        if (self.delegate) {
+            [self.delegate gameDidLoad];
+        }
+    } else {
+        [self resetGame];
     }
 }
 
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:self.board forKey:@"board"];
-    [coder encodeInteger:self.currentPlayer forKey:@"currentPlayer"];
-}
 
-/*
--(NSArray*)board
-{
-    return [self.board copy];
-}
-*/
 -(void)dealloc
 {
-    //    [self saveGame];
+    self.board = nil;
+    self.delegate = nil;
 }
 
 

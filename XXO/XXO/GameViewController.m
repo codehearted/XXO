@@ -145,7 +145,12 @@
 
 - (void)gameDidReset
 {
-    [self gameDidLoad];
+    if (self.game.currentPlayer == blank) {
+        self.turnIndicator.text = @"Tap to Start (O's Turn)";
+    } else {
+        self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",
+                                   (self.game.currentPlayer==playerO ? @"O" : @"X")];
+    }
     
     [self.board resetBoard];
     switch (arc4random()%2) {
@@ -169,6 +174,11 @@
     } else {
         self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",
                                    (self.game.currentPlayer==playerO ? @"O" : @"X")];
+    }
+    
+    for (int i = 0; i<self.game.board.count; i++) {
+        NSNumber *space = self.game.board[i];
+        [self.board setBoardSpace:i to:[space integerValue]];
     }
 }
 
