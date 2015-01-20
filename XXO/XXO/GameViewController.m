@@ -54,9 +54,8 @@
     
     // Create and configure the scene.
     self.board = [GameBoard unarchiveFromFile:@"GameScene"];
-    //    self.scene.scaleMode = SKSceneScaleModeResizeFill;
     self.board.scaleMode = SKSceneScaleModeAspectFill;
-    self.board.vc = self; // **********
+    self.board.vc = self;
     
     // Present the scene.
     [skView presentScene:self.board];
