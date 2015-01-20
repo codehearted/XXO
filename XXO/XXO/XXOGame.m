@@ -28,7 +28,7 @@
 #pragma mark Game Actions
 - (player)playAtSpace:(boardSpace)spaceNumber
 {
-    if (spaceNumber >= 0 && spaceNumber <= 8 && [self.board[spaceNumber] integerValue] == blank && self.currentPlayer != blank) {
+    if (spaceNumber <= 8 && [self.board[spaceNumber] integerValue] == blank && self.currentPlayer != blank) {
         if (self.currentPlayer == playerX) {
             //            self.board[spaceNumber] = [NSNumber numberWithInt:playerX];
             [self.board setObject:[NSNumber numberWithInt:playerX] atIndexedSubscript:spaceNumber];

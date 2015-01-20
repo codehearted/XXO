@@ -34,12 +34,6 @@ NSMutableArray *stdBoardPosition;
         [NSValue valueWithCGPoint:CGPointMake(((SKSpriteNode*)self.board[i]).position.x,
                                               ((SKSpriteNode*)self.board[i]).position.y)]];
     }
-    for (SKSpriteNode *node in self.board) {
-        node.physicsBody = [SKPhysicsBody bodyWithTexture:node.texture alphaThreshold:0.2 size:node.size];
-        if (node.physicsBody) {
-            node.physicsBody.affectedByGravity = NO;
-        }
-    }
 
     textureX = [SKTexture textureWithImageNamed:@"X"];
     textureO = [SKTexture textureWithImageNamed:@"O"];
@@ -50,11 +44,9 @@ NSMutableArray *stdBoardPosition;
 {
     for (boardSpace space = 0; space < 9; space++) {
         [self setBoardSpace:space to:blank];
-        ((SKSpriteNode*)self.board[space]).position = [stdBoardPosition[space] CGPointValue];
-        //        [self.board[space] runAction:[SKAction moveTo:[stdBoardPosition[space] CGPointValue] duration:0.8]];
-        [((SKSpriteNode*)self.board[space]) runAction:[SKAction rotateToAngle:0 duration:0.2]];
-    
-        
+        //((SKSpriteNode*)self.board[space]).position = [stdBoardPosition[space] CGPointValue];
+        [self.board[space] runAction:[SKAction moveTo:[stdBoardPosition[space] CGPointValue] duration:0.8]];
+        [((SKSpriteNode*)self.board[space]) runAction:[SKAction rotateToAngle:0 duration:1.1]];
     }
 }
 
@@ -84,17 +76,32 @@ NSMutableArray *stdBoardPosition;
 
 -(void)setBoardSpace:(boardSpace)spaceNum to:(player)playerValue
 {
+    
     SKSpriteNode *theSpace = self.board[spaceNum];
-    //    theSpace.physicsBody.affectedByGravity = NO;
-    theSpace.physicsBody = nil;
     if (playerValue == playerO) {
         [theSpace setTexture:textureO];
-        [theSpace runAction:[SKAction sequence:@[[SKAction scaleBy:5 duration:0.001], [SKAction scaleBy:0.2 duration:0.6]]]];
-
+        [theSpace runAction:[SKAction sequence:@[[SKAction scaleBy:5 duration:0.00], [SKAction scaleBy:0.2 duration:0.2]]]];
+        theSpace.physicsBody = [SKPhysicsBody bodyWithTexture:textureO alphaThreshold:0.2 size:theSpace.size];
+        theSpace.physicsBody.pinned = YES;
+        theSpace.physicsBody.affectedByGravity = NO;
+        theSpace.physicsBody.dynamic = NO;
+        theSpace.physicsBody.friction = 0.1;
+        theSpace.physicsBody.mass = 18;
+        theSpace.physicsBody.charge = 10;
     } else if (playerValue == playerX) {
         [theSpace setTexture:textureX];
-        [theSpace runAction:[SKAction sequence:@[[SKAction scaleBy:5 duration:0.001], [SKAction scaleBy:0.2 duration:0.6]]]];
+        [theSpace runAction:[SKAction sequence:@[[SKAction scaleBy:5 duration:0.00], [SKAction scaleBy:0.2 duration:0.2]]]];
+        theSpace.physicsBody = [SKPhysicsBody bodyWithTexture:textureX alphaThreshold:0.2 size:theSpace.size];
+        theSpace.physicsBody.pinned = YES;
+        theSpace.physicsBody.affectedByGravity = NO;
+        theSpace.physicsBody.dynamic = NO;
+        theSpace.physicsBody.friction = 0.5;
+        theSpace.physicsBody.mass = 10;
+        theSpace.physicsBody.charge = 100;
     } else {
+        theSpace.physicsBody.pinned = YES;
+        theSpace.physicsBody.affectedByGravity = NO;
+        theSpace.physicsBody.dynamic = NO;
         [theSpace setTexture:textureBlank];
     }
     
@@ -103,9 +110,14 @@ NSMutableArray *stdBoardPosition;
 -(void)destroyBoard
 {
     for (SKSpriteNode *node in self.board) {
-        node.physicsBody = [SKPhysicsBody bodyWithTexture:node.texture alphaThreshold:0.2 size:node.size];
+        node.physicsBody.pinned = NO;
         node.physicsBody.affectedByGravity = YES;
+        node.physicsBody.dynamic = YES;
+        [node.physicsBody applyForce:CGVectorMake(1, 10)];
     }
+    SKFieldNode *explosionField = ((SKFieldNode*)[self childNodeWithName:@"explosionField"]);
+    explosionField.position = CGPointMake(explosionField.position.x + (arc4random() % 200) - 100, explosionField.position.y + (arc4random() % 200) - 100);
+    
     
 }
 
