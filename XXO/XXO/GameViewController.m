@@ -169,7 +169,7 @@
 - (void)gameDidLoad
 {
     if (self.game.currentPlayer == blank) {
-        self.turnIndicator.text = @"Tap to Start (O's Turn)";
+        self.turnIndicator.text = @"Tap Reset to Start";
     } else {
         self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",
                                    (self.game.currentPlayer==playerO ? @"O" : @"X")];
