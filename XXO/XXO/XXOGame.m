@@ -134,6 +134,7 @@
     if (self.delegate) {
         [self.delegate gameDidReset];
     }
+    [self saveGame];
 }
 
 - (void)saveGame

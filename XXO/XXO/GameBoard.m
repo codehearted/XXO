@@ -44,10 +44,10 @@ NSMutableArray *stdBoardPosition;
 {
     for (boardSpace space = 0; space < 9; space++) {
         [self setBoardSpace:space to:blank];
-        //((SKSpriteNode*)self.board[space]).position = [stdBoardPosition[space] CGPointValue];
-        [self.board[space] runAction:[SKAction moveTo:[stdBoardPosition[space] CGPointValue] duration:0.8]];
-        [((SKSpriteNode*)self.board[space]) runAction:[SKAction rotateToAngle:0 duration:1.1]];
+        [self.board[space] runAction:[SKAction moveTo:[stdBoardPosition[space] CGPointValue] duration:0.9]];
+        [((SKSpriteNode*)self.board[space]) runAction:[SKAction rotateToAngle:0 duration:1.2]];
     }
+    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
