@@ -13,6 +13,7 @@
 
 SKTexture *textureX;
 SKTexture *textureO;
+SKTexture *textureBlank;
 
 -(void)didMoveToView:(SKView *)view {
     self.board = @[ [self childNodeWithName:@"0"],
@@ -29,9 +30,16 @@ SKTexture *textureO;
     
     textureX = [SKTexture textureWithImageNamed:@"X"];
     textureO = [SKTexture textureWithImageNamed:@"O"];
+    textureBlank = [SKTexture textureWithImageNamed:@"blank"];
 }
 
-int i = 0;
+-(void)resetBoard
+{
+    for (boardSpace space = 0; space < 9; space++) {
+        [self setBoardSpace:space to:blank];
+    }
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
@@ -63,7 +71,7 @@ int i = 0;
     } else if (playerValue == playerX) {
         [(SKSpriteNode*)self.board[spaceNum] setTexture:textureX];
     } else {
-        [(SKSpriteNode*)self.board[spaceNum] setTexture:nil];
+        [(SKSpriteNode*)self.board[spaceNum] setTexture:textureBlank];
     }
 }
 

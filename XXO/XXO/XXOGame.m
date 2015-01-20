@@ -102,8 +102,19 @@
         ![self.board[upperRight] isEqualToNumber:[NSNumber numberWithInt:blank]]) {
         // Diagonal Upper Right <-> Lower Left Winner
         winningPlayer = (player)[self.board[upperRight] integerValue];
+    } else
+    if (![self.board[upperLeft] isEqualToNumber:[NSNumber numberWithInt:blank]] &&
+        ![self.board[upperMid] isEqualToNumber:[NSNumber numberWithInt:blank]] &&
+        ![self.board[upperRight] isEqualToNumber:[NSNumber numberWithInt:blank]] &&
+        ![self.board[centerLeft] isEqualToNumber:[NSNumber numberWithInt:blank]] &&
+        ![self.board[centerMid] isEqualToNumber:[NSNumber numberWithInt:blank]] &&
+        ![self.board[centerRight] isEqualToNumber:[NSNumber numberWithInt:blank]] &&
+        ![self.board[lowerLeft] isEqualToNumber:[NSNumber numberWithInt:blank]] &&
+        ![self.board[lowerMid] isEqualToNumber:[NSNumber numberWithInt:blank]] &&
+        ![self.board[lowerRight] isEqualToNumber:[NSNumber numberWithInt:blank]]) {
+        // Tie
+        winningPlayer = Tie;
     }
-
     return winningPlayer;
 }
 

@@ -22,9 +22,9 @@ typedef enum boardSpace {
     centerLeft  = 3,
     centerMid   = 4,
     centerRight = 5,
-    lowerLeft  = 6,
-    lowerMid   = 7,
-    lowerRight = 8
+    lowerLeft   = 6,
+    lowerMid    = 7,
+    lowerRight  = 8
 } boardSpace;
 
 

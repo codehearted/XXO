@@ -17,5 +17,6 @@
 @property (weak,nonatomic) GameViewController *vc;
 
 -(void)setBoardSpace:(boardSpace)spaceNum to:(player)playerValue;
+-(void)resetBoard;
 
 @end

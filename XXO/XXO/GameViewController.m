@@ -51,15 +51,14 @@
     skView.ignoresSiblingOrder = YES;
     
     // Create and configure the scene.
-    GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
-    scene.scaleMode = SKSceneScaleModeResizeFill;
-    scene.vc = self;
+    self.scene = [GameScene unarchiveFromFile:@"GameScene"];
+    //    self.scene.scaleMode = SKSceneScaleModeResizeFill;
+    self.scene.scaleMode = SKSceneScaleModeAspectFill;
+    self.scene.vc = self; // **********
     
     // Present the scene.
-    [skView presentScene:scene];
+    [skView presentScene:self.scene];
     
-    // Load references to game spaces
-    //    [scene childNodeWithName:@"0"];
     
     // Load Game Model
     self.game = [[XXOGame alloc] initWithDelegate:self];
@@ -103,11 +102,16 @@
 - (void)player:(player)player didPlayAtSpace:(boardSpace)spaceNumber
 {
     [((GameScene*)((SKView*)self.view).scene) setBoardSpace:spaceNumber to:player];
+        self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",(self.game.currentPlayer==playerO ? @"O" : @"X")];
+
 }
 
 - (void)gameDidReset
 {
     [self gameDidLoad];
+    
+    [self.scene resetBoard];
+    
 }
 
 - (void)gameDidLoad
@@ -122,7 +126,11 @@
 
 - (void)gameOverWithWinner:(player)winningPlayer
 {
-    self.turnIndicator.text = [NSString stringWithFormat:@"%@ Wins!",(winningPlayer==playerO ? @"O" : @"X")];
+    if (winningPlayer == Tie) {
+        self.turnIndicator.text = [NSString stringWithFormat:@"Tie, Everyone Wins/Loses!"];        
+    } else {
+        self.turnIndicator.text = [NSString stringWithFormat:@"%@ Wins!",(winningPlayer==playerO ? @"O" : @"X")];
+    }
     self.game.currentPlayer = blank;
 }
 
