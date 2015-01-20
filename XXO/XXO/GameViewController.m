@@ -29,19 +29,20 @@
 
 @end
 
-@implementation GameViewController
+#pragma mark -
 
+@implementation GameViewController : UIViewController
+#pragma mark ViewController Methods
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    self.showDebugInfo = YES;
+    self.showDebugInfo = NO;
     
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     
     if (self.showDebugInfo) {
-        // Show debug info
         skView.showsFPS = YES;
         skView.showsNodeCount = YES;
     }
@@ -52,10 +53,18 @@
     // Create and configure the scene.
     GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
     scene.scaleMode = SKSceneScaleModeResizeFill;
-
+    scene.vc = self;
     
     // Present the scene.
     [skView presentScene:scene];
+    
+    // Load references to game spaces
+    //    [scene childNodeWithName:@"0"];
+    
+    // Load Game Model
+    self.game = [[XXOGame alloc] initWithDelegate:self];
+    [self.game loadGame];
+    
 }
 
 - (BOOL)shouldAutorotate
@@ -78,12 +87,43 @@
     return YES;
 }
 
-#pragma mark - Actions
+#pragma mark Game Actions
 
-- (IBAction)resetGame
+- (IBAction)resetGameButtonPressed
 {
+    [self.game resetGame];
+}
+
+- (void)currentPlayerPlayedAtSpace:(boardSpace)spaceNumber
+{
+    [self.game playAtSpace:spaceNumber];
+}
+
+#pragma mark Game Delegate Callbacks
+- (void)player:(player)player didPlayAtSpace:(boardSpace)spaceNumber
+{
+    [((GameScene*)((SKView*)self.view).scene) setBoardSpace:spaceNumber to:player];
+}
+
+- (void)gameDidReset
+{
+    [self gameDidLoad];
+}
+
+- (void)gameDidLoad
+{
+    if (self.game.currentPlayer == blank) {
+        self.turnIndicator.text = @"Tap to Start (O's Turn)";
+    } else {
+        self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",(self.game.currentPlayer==playerO ? @"O" : @"X")];
+    }
     
 }
 
+- (void)gameOverWithWinner:(player)winningPlayer
+{
+    self.turnIndicator.text = [NSString stringWithFormat:@"%@ Wins!",(winningPlayer==playerO ? @"O" : @"X")];
+    self.game.currentPlayer = blank;
+}
 
 @end

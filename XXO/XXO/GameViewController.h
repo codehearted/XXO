@@ -10,12 +10,14 @@
 #import <SpriteKit/SpriteKit.h>
 #import "XXOGame.h"
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController <XXOGameDelegate>
 
 @property (assign) BOOL showDebugInfo;
 @property (strong, nonatomic) IBOutlet UILabel *turnIndicator;
 @property (strong, nonatomic) IBOutlet UIButton *resetButton;
 @property (strong, nonatomic) XXOGame *game;
 
-- (IBAction)resetGame;
+- (IBAction)resetGameButtonPressed;
+- (void)currentPlayerPlayedAtSpace:(boardSpace)spaceNumber;
+
 @end

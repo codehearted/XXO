@@ -8,35 +8,34 @@
 
 #import "XXOGame.h"
 
-@interface XXOGame ()
-
-@property (strong, nonatomic)   NSMutableArray *board;
-
-@end
+#pragma mark -
 
 @implementation XXOGame
 
-
-- (instancetype)init
+#pragma mark Setup
+- (instancetype)initWithDelegate:(id<XXOGameDelegate>)del
 {
     self = [super init];
     if (self) {
-        self.delegate = nil;
+        self.delegate = del;
         // if game was interrupted, load from storage.
         [self resetGame];
     }
     return self;
 }
 
+
+#pragma mark Game Actions
 - (player)playAtSpace:(boardSpace)spaceNumber
 {
     if (spaceNumber >= 0 && spaceNumber <= 8) {
         if (self.currentPlayer == playerX) {
-            [self.board[spaceNumber] setObject:[NSNumber numberWithInt:playerX] atIndex:spaceNumber];
+            self.board[spaceNumber] = [NSNumber numberWithInt:playerX];
+
             self.currentPlayer = playerO;
             [self.delegate player:playerX didPlayAtSpace:spaceNumber];
         } else if (self.currentPlayer == playerO) {
-            [self.board[spaceNumber] setObject:[NSNumber numberWithInt:playerO] atIndex:spaceNumber];
+            self.board[spaceNumber] = [NSNumber numberWithInt:playerO];
             self.currentPlayer = playerX;
             [self.delegate player:playerO didPlayAtSpace:spaceNumber];
         }
@@ -114,7 +113,7 @@
     for (int i = 0; i<9;i++) {
         [((NSMutableArray*)self.board) addObject:[NSNumber numberWithInt:blank]];
     }
-    self.currentPlayer = blank;
+    self.currentPlayer = (arc4random()%2==0 ? playerO : playerX);
     if (self.delegate) {
         [self.delegate gameDidReset];
     }
