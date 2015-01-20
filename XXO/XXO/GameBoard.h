@@ -11,7 +11,7 @@
 
 @class GameViewController;
 
-@interface GameScene : SKScene
+@interface GameBoard : SKScene
 
 @property (strong,nonatomic) NSArray *board;
 @property (weak,nonatomic) GameViewController *vc;

@@ -7,8 +7,7 @@
 //
 
 #import "GameViewController.h"
-#import "GameScene.h"
-#import <AVFoundation/AVFoundation.h>
+#import "GameBoard.h"
 
 @implementation SKScene (Unarchive)
 
@@ -33,7 +32,6 @@
 #pragma mark -
 
 @implementation GameViewController : UIViewController
-AVAudioPlayer *audioPlayerObj;
 
 #pragma mark ViewController Methods
 - (void)viewDidLoad
@@ -55,7 +53,7 @@ AVAudioPlayer *audioPlayerObj;
     skView.ignoresSiblingOrder = YES;
     
     // Create and configure the scene.
-    self.scene = [GameScene unarchiveFromFile:@"GameScene"];
+    self.scene = [GameBoard unarchiveFromFile:@"GameScene"];
     //    self.scene.scaleMode = SKSceneScaleModeResizeFill;
     self.scene.scaleMode = SKSceneScaleModeAspectFill;
     self.scene.vc = self; // **********
@@ -111,16 +109,16 @@ AVAudioPlayer *audioPlayerObj;
         
         filePath= [NSString stringWithFormat:@"%@", [[NSBundle mainBundle] resourcePath]];
         
-        if(!audioPlayerObj)
-            audioPlayerObj = [AVAudioPlayer alloc];
+        if(!self.audioPlayerObj)
+            self.audioPlayerObj = [AVAudioPlayer alloc];
         
         NSURL *acutualFilePath= [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@",filePath,fileNameWithExtension]];
         
         NSError *error;
         
-        audioPlayerObj = [audioPlayerObj initWithContentsOfURL:acutualFilePath error:&error];
+        self.audioPlayerObj = [self.audioPlayerObj initWithContentsOfURL:acutualFilePath error:&error];
         
-        [audioPlayerObj play];
+        [self.audioPlayerObj play];
     }
 }
 
@@ -128,8 +126,9 @@ AVAudioPlayer *audioPlayerObj;
 
 - (void)player:(player)player didPlayAtSpace:(boardSpace)spaceNumber
 {
-    [((GameScene*)((SKView*)self.view).scene) setBoardSpace:spaceNumber to:player];
-        self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",(self.game.currentPlayer==playerO ? @"O" : @"X")];
+    [self.scene setBoardSpace:spaceNumber to:player];
+        self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",
+                                   (self.game.currentPlayer==playerO ? @"O" : @"X")];
 
     switch (arc4random()%2) {
         case 0:
@@ -149,7 +148,16 @@ AVAudioPlayer *audioPlayerObj;
     [self gameDidLoad];
     
     [self.scene resetBoard];
-    [self playSoundWithOfThisFile:@"Reset58.wav"];
+    switch (arc4random()%2) {
+        case 0:
+            [self playSoundWithOfThisFile:@"Reset58.wav"];
+            break;
+        case 1:
+            [self playSoundWithOfThisFile:@"Reset64.wav"];
+            break;
+        default:
+            break;
+    }
 
     
 }
@@ -159,7 +167,8 @@ AVAudioPlayer *audioPlayerObj;
     if (self.game.currentPlayer == blank) {
         self.turnIndicator.text = @"Tap to Start (O's Turn)";
     } else {
-        self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",(self.game.currentPlayer==playerO ? @"O" : @"X")];
+        self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",
+                                   (self.game.currentPlayer==playerO ? @"O" : @"X")];
     }
     
 }

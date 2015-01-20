@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Paul Jacobs. All rights reserved.
 //
 
-#import "GameScene.h"
-#import "GameViewController.h" // *****
+#import "GameBoard.h"
+#import "GameViewController.h"
 
-@implementation GameScene
+@implementation GameBoard
 
 SKTexture *textureX;
 SKTexture *textureO;
@@ -66,17 +66,22 @@ SKTexture *textureBlank;
 
 -(void)setBoardSpace:(boardSpace)spaceNum to:(player)playerValue
 {
+    SKSpriteNode *theSpace = self.board[spaceNum];
+    
     if (playerValue == playerO) {
-        [(SKSpriteNode*)self.board[spaceNum] setTexture:textureO];
+        [theSpace setTexture:textureO];
+        [theSpace runAction:[SKAction sequence:@[[SKAction scaleBy:5 duration:0.00], [SKAction scaleBy:0.2 duration:0.6]]]];
     } else if (playerValue == playerX) {
-        [(SKSpriteNode*)self.board[spaceNum] setTexture:textureX];
+        [theSpace setTexture:textureX];
+        [theSpace runAction:[SKAction sequence:@[[SKAction scaleBy:5 duration:0.00], [SKAction scaleBy:0.2 duration:0.6]]]];
     } else {
-        [(SKSpriteNode*)self.board[spaceNum] setTexture:textureBlank];
+        [theSpace setTexture:textureBlank];
     }
+    
 }
 
 -(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
+
 }
 
 @end

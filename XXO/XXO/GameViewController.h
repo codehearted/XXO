@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
-#import "GameScene.h"
+#import <AVFoundation/AVFoundation.h>
+
+#import "GameBoard.h"
 #import "XXOGame.h"
 
 @interface GameViewController : UIViewController <XXOGameDelegate>
@@ -18,7 +20,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *turnIndicator;
 @property (strong, nonatomic) IBOutlet UIButton *resetButton;
 @property (strong, nonatomic) XXOGame *game;
-@property (strong, nonatomic) GameScene *scene;
+@property (strong, nonatomic) GameBoard *scene;
+@property (strong, nonatomic) AVAudioPlayer *audioPlayerObj;
 
 - (IBAction)resetGameButtonPressed;
 - (void)currentPlayerPlayedAtSpace:(boardSpace)spaceNumber;

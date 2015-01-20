@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		DA39D9491A6D535E0077B765 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D9481A6D535E0077B765 /* main.m */; };
 		DA39D94C1A6D535E0077B765 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D94B1A6D535E0077B765 /* AppDelegate.m */; };
-		DA39D94F1A6D535E0077B765 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D94E1A6D535E0077B765 /* GameScene.m */; };
+		DA39D94F1A6D535E0077B765 /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D94E1A6D535E0077B765 /* GameBoard.m */; };
 		DA39D9511A6D535E0077B765 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA39D9501A6D535E0077B765 /* GameScene.sks */; };
 		DA39D9541A6D535E0077B765 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D9531A6D535E0077B765 /* GameViewController.m */; };
 		DA39D9571A6D535E0077B765 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA39D9551A6D535E0077B765 /* Main.storyboard */; };
@@ -23,6 +23,7 @@
 		DA534FF31A6E06920002E944 /* Win60_louder.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA534FF21A6E06920002E944 /* Win60_louder.wav */; };
 		DA534FF51A6E082F0002E944 /* Reset58.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA534FF41A6E082F0002E944 /* Reset58.wav */; };
 		DA534FF71A6E0AD90002E944 /* Hit_Hurt12.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA534FF61A6E0AD90002E944 /* Hit_Hurt12.wav */; };
+		DAA993E71A6E133500E4DDC7 /* Reset64.wav in Resources */ = {isa = PBXBuildFile; fileRef = DAA993E61A6E133500E4DDC7 /* Reset64.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +42,8 @@
 		DA39D9481A6D535E0077B765 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DA39D94A1A6D535E0077B765 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DA39D94B1A6D535E0077B765 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DA39D94D1A6D535E0077B765 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		DA39D94E1A6D535E0077B765 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		DA39D94D1A6D535E0077B765 /* GameBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameBoard.h; sourceTree = "<group>"; };
+		DA39D94E1A6D535E0077B765 /* GameBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameBoard.m; sourceTree = "<group>"; };
 		DA39D9501A6D535E0077B765 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		DA39D9521A6D535E0077B765 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		DA39D9531A6D535E0077B765 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
@@ -59,6 +60,7 @@
 		DA534FF21A6E06920002E944 /* Win60_louder.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Win60_louder.wav; sourceTree = "<group>"; };
 		DA534FF41A6E082F0002E944 /* Reset58.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Reset58.wav; sourceTree = "<group>"; };
 		DA534FF61A6E0AD90002E944 /* Hit_Hurt12.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Hit_Hurt12.wav; sourceTree = "<group>"; };
+		DAA993E61A6E133500E4DDC7 /* Reset64.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Reset64.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +104,8 @@
 			children = (
 				DA39D94A1A6D535E0077B765 /* AppDelegate.h */,
 				DA39D94B1A6D535E0077B765 /* AppDelegate.m */,
-				DA39D94D1A6D535E0077B765 /* GameScene.h */,
-				DA39D94E1A6D535E0077B765 /* GameScene.m */,
+				DA39D94D1A6D535E0077B765 /* GameBoard.h */,
+				DA39D94E1A6D535E0077B765 /* GameBoard.m */,
 				DA39D9501A6D535E0077B765 /* GameScene.sks */,
 				DA39D9521A6D535E0077B765 /* GameViewController.h */,
 				DA39D9531A6D535E0077B765 /* GameViewController.m */,
@@ -114,6 +116,7 @@
 				DA534FF01A6DFEC80002E944 /* Win23.wav */,
 				DA534FF21A6E06920002E944 /* Win60_louder.wav */,
 				DA534FF41A6E082F0002E944 /* Reset58.wav */,
+				DAA993E61A6E133500E4DDC7 /* Reset64.wav */,
 				DA39D9551A6D535E0077B765 /* Main.storyboard */,
 				DA39D9581A6D535E0077B765 /* Images.xcassets */,
 				DA39D95A1A6D535E0077B765 /* LaunchScreen.xib */,
@@ -230,6 +233,7 @@
 			files = (
 				DA534FF31A6E06920002E944 /* Win60_louder.wav in Resources */,
 				DA534FF11A6DFEC80002E944 /* Win23.wav in Resources */,
+				DAA993E71A6E133500E4DDC7 /* Reset64.wav in Resources */,
 				DA534FEF1A6DFBF70002E944 /* Hit_Hurt13.wav in Resources */,
 				DA534FF71A6E0AD90002E944 /* Hit_Hurt12.wav in Resources */,
 				DA39D95C1A6D535E0077B765 /* LaunchScreen.xib in Resources */,
@@ -257,7 +261,7 @@
 				DA39D9541A6D535E0077B765 /* GameViewController.m in Sources */,
 				DA39D9781A6D676C0077B765 /* XXOGame.m in Sources */,
 				DA39D94C1A6D535E0077B765 /* AppDelegate.m in Sources */,
-				DA39D94F1A6D535E0077B765 /* GameScene.m in Sources */,
+				DA39D94F1A6D535E0077B765 /* GameBoard.m in Sources */,
 				DA39D9491A6D535E0077B765 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
