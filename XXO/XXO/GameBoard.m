@@ -17,17 +17,18 @@ SKTexture *textureBlank;
 NSMutableArray *stdBoardPosition;
 
 -(void)didMoveToView:(SKView *)view {
-    self.board = @[ [self childNodeWithName:@"0"],
-                    [self childNodeWithName:@"1"],
-                    [self childNodeWithName:@"2"],
+    SKNode *grid = [self childNodeWithName:@"grid"];
+    self.board = [@[ [grid childNodeWithName:@"0"],
+                    [grid childNodeWithName:@"1"],
+                    [grid childNodeWithName:@"2"],
 
-                    [self childNodeWithName:@"3"],
-                    [self childNodeWithName:@"4"],
-                    [self childNodeWithName:@"5"],
+                    [grid childNodeWithName:@"3"],
+                    [grid childNodeWithName:@"4"],
+                    [grid childNodeWithName:@"5"],
                     
-                    [self childNodeWithName:@"6"],
-                    [self childNodeWithName:@"7"],
-                    [self childNodeWithName:@"8"]];
+                    [grid childNodeWithName:@"6"],
+                    [grid childNodeWithName:@"7"],
+                    [grid childNodeWithName:@"8"]] mutableCopy];
     stdBoardPosition = [@[] mutableCopy];
     for (int i=0;i<9;i++) {
         [stdBoardPosition addObject:
@@ -38,6 +39,11 @@ NSMutableArray *stdBoardPosition;
     textureX = [SKTexture textureWithImageNamed:@"X"];
     textureO = [SKTexture textureWithImageNamed:@"O"];
     textureBlank = [SKTexture textureWithImageNamed:@"blank"];
+    
+    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
+        [grid setScale:0.7];
+        [grid setPosition:CGPointMake(grid.position.x + self.size.width * 0.01,grid.position.y - self.size.height * 0.05)];
+    }
 }
 
 -(void)resetBoard
