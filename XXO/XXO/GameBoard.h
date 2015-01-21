@@ -13,7 +13,7 @@
 
 @interface GameBoard : SKScene
 
-@property (strong,nonatomic) NSMutableArray *board;
+@property (strong,nonatomic) NSArray *board;
 @property (weak,nonatomic) GameViewController *vc;
 
 -(void)setBoardSpace:(boardSpace)spaceNum to:(player)playerValue;

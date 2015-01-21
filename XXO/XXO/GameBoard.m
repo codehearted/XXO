@@ -18,7 +18,7 @@ NSMutableArray *stdBoardPosition;
 
 -(void)didMoveToView:(SKView *)view {
     SKNode *grid = [self childNodeWithName:@"grid"];
-    self.board = [@[ [grid childNodeWithName:@"0"],
+    self.board = @[ [grid childNodeWithName:@"0"],
                     [grid childNodeWithName:@"1"],
                     [grid childNodeWithName:@"2"],
 
@@ -28,7 +28,7 @@ NSMutableArray *stdBoardPosition;
                     
                     [grid childNodeWithName:@"6"],
                     [grid childNodeWithName:@"7"],
-                    [grid childNodeWithName:@"8"]] mutableCopy];
+                    [grid childNodeWithName:@"8"]];
     stdBoardPosition = [@[] mutableCopy];
     for (int i=0;i<9;i++) {
         [stdBoardPosition addObject:
