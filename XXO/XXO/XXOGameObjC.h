@@ -28,7 +28,7 @@ typedef enum boardSpace {
 } boardSpace;
 
 
-@protocol XXOGameDelegate <NSObject>
+@protocol XXOGameDelegateObjc <NSObject>
 #pragma  mark Delegate Callbacks
 - (void)player:(player)player didPlayAtSpace:(boardSpace)spaceNumber;
 - (void)gameDidReset;
@@ -43,10 +43,10 @@ typedef enum boardSpace {
 #pragma mark Game Data
 @property (strong, nonatomic)   NSMutableArray *board;
 @property (assign)              player currentPlayer;
-@property (weak, nonatomic)     id<XXOGameDelegate> delegate;
+@property (weak, nonatomic)     id<XXOGameDelegateObjc> delegate;
 
 #pragma mark Setup
-- (instancetype)initWithDelegate:(id<XXOGameDelegate>)del;
+- (instancetype)initWithDelegate:(id<XXOGameDelegateObjc>)del;
 
 #pragma  mark Game Actions
 - (player)playAtSpace:(boardSpace)spaceNumber;

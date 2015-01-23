@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA0852EF1A72E0600052F504 /* XXOGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0852EE1A72E0600052F504 /* XXOGame.swift */; };
+		DA0852F01A72E0600052F504 /* XXOGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0852EE1A72E0600052F504 /* XXOGame.swift */; };
 		DA39D9491A6D535E0077B765 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D9481A6D535E0077B765 /* main.m */; };
 		DA39D94C1A6D535E0077B765 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D94B1A6D535E0077B765 /* AppDelegate.m */; };
 		DA39D94F1A6D535E0077B765 /* GameBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D94E1A6D535E0077B765 /* GameBoardViewController.m */; };
@@ -37,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA0852EE1A72E0600052F504 /* XXOGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XXOGame.swift; sourceTree = "<group>"; };
+		DA0852F41A72E1480052F504 /* XXO-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XXO-Bridging-Header.h"; sourceTree = "<group>"; };
+		DA0852F51A72E1720052F504 /* XXOTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XXOTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		DA39D9431A6D535E0077B765 /* XXO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XXO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA39D9471A6D535E0077B765 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA39D9481A6D535E0077B765 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -105,8 +110,8 @@
 				DA39D94A1A6D535E0077B765 /* AppDelegate.h */,
 				DA39D94B1A6D535E0077B765 /* AppDelegate.m */,
 				DA39D94D1A6D535E0077B765 /* GameBoardViewController.h */,
-				DA39D94E1A6D535E0077B765 /* GameBoardViewController.m */,
 				DA39D9501A6D535E0077B765 /* GameScene.sks */,
+				DA39D94E1A6D535E0077B765 /* GameBoardViewController.m */,
 				DA39D9521A6D535E0077B765 /* GameViewController.h */,
 				DA39D9531A6D535E0077B765 /* GameViewController.m */,
 				DA39D9761A6D676C0077B765 /* XXOGameObjC.h */,
@@ -121,6 +126,9 @@
 				DA39D9581A6D535E0077B765 /* Images.xcassets */,
 				DA39D95A1A6D535E0077B765 /* LaunchScreen.xib */,
 				DA39D9461A6D535E0077B765 /* Supporting Files */,
+				DA0852EE1A72E0600052F504 /* XXOGame.swift */,
+				DA0852F41A72E1480052F504 /* XXO-Bridging-Header.h */,
+				DA0852F51A72E1720052F504 /* XXOTests-Bridging-Header.h */,
 			);
 			path = XXO;
 			sourceTree = "<group>";
@@ -259,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA39D9541A6D535E0077B765 /* GameViewController.m in Sources */,
+				DA0852EF1A72E0600052F504 /* XXOGame.swift in Sources */,
 				DA39D9781A6D676C0077B765 /* XXOGameObjC.m in Sources */,
 				DA39D94C1A6D535E0077B765 /* AppDelegate.m in Sources */,
 				DA39D94F1A6D535E0077B765 /* GameBoardViewController.m in Sources */,
@@ -271,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA39D9681A6D535E0077B765 /* XXOTests.m in Sources */,
+				DA0852F01A72E0600052F504 /* XXOGame.swift in Sources */,
 				DA39D9791A6D676C0077B765 /* XXOGameObjC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +334,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -366,6 +377,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -392,7 +404,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "XXO/XXO-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "./XXO/XXO-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -406,7 +418,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "XXO/XXO-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "./XXO/XXO-Bridging-Header.h";
 			};
 			name = Release;
 		};

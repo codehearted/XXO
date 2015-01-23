@@ -62,8 +62,8 @@
     
     
     // Load Game Model
-    self.game = [[XXOGameObjC alloc] initWithDelegate:self];
-    [self.game loadGame];
+    self.gameObjC = [[XXOGameObjC alloc] initWithDelegate:self];
+    [self.gameObjC loadGame];
     self.soundsEnabled = YES;
     
 }
@@ -92,13 +92,13 @@
 
 - (IBAction)resetGameButtonPressed
 {
-    [self.game resetGame];
+    [self.gameObjC resetGame];
 }
 
 - (void)currentPlayerPlayedAtSpace:(boardSpace)spaceNumber
 {
-    if (self.game.currentPlayer != blank) {
-        [self.game playAtSpace:spaceNumber];
+    if (self.gameObjC.currentPlayer != blank) {
+        [self.gameObjC playAtSpace:spaceNumber];
     }
 }
 
@@ -127,7 +127,7 @@
 {
     [self.boardViewController setBoardSpace:spaceNumber to:player];
         self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",
-                                   (self.game.currentPlayer==playerO ? @"O" : @"X")];
+                                   (self.gameObjC.currentPlayer==playerO ? @"O" : @"X")];
 
     switch (arc4random()%2) {
         case 0:
@@ -144,11 +144,11 @@
 
 - (void)gameDidReset
 {
-    if (self.game.currentPlayer == blank) {
+    if (self.gameObjC.currentPlayer == blank) {
         self.turnIndicator.text = @"Tap to Start (O's Turn)";
     } else {
         self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",
-                                   (self.game.currentPlayer==playerO ? @"O" : @"X")];
+                                   (self.gameObjC.currentPlayer==playerO ? @"O" : @"X")];
     }
     
     [self.boardViewController resetBoard];
@@ -168,16 +168,16 @@
 
 - (void)gameDidLoad
 {
-    if (self.game.currentPlayer == blank) {
+    if (self.gameObjC.currentPlayer == blank) {
         self.turnIndicator.text = @"Tap Reset to Start";
     } else {
         self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",
-                                   (self.game.currentPlayer==playerO ? @"O" : @"X")];
+                                   (self.gameObjC.currentPlayer==playerO ? @"O" : @"X")];
     }
     
-    for (int i = 0; i<self.game.board.count; i++) {
-        NSNumber *space = self.game.board[i];
-        [self.boardViewController setBoardSpace:i to:[space integerValue]];
+    for (int i = 0; i<self.gameObjC.board.count; i++) {
+        NSNumber *space = self.gameObjC.board[i];
+        [self.boardViewController setBoardSpace:i to:(player)[space integerValue]];
     }
 }
 
@@ -191,7 +191,7 @@
         self.turnIndicator.text = [NSString stringWithFormat:@"%@ Wins!",(winningPlayer==playerO ? @"O" : @"X")];
         [self playSoundWithOfThisFile:@"Win23.wav"];
     }
-    self.game.currentPlayer = blank;
+    self.gameObjC.currentPlayer = blank;
 }
 
 @end

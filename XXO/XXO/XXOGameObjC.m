@@ -13,7 +13,7 @@
 @implementation XXOGameObjC
 
 #pragma mark Setup
-- (instancetype)initWithDelegate:(id<XXOGameDelegate>)del
+- (instancetype)initWithDelegate:(id<XXOGameDelegateObjc>)del
 {
     self = [super init];
     if (self) {
@@ -151,7 +151,7 @@
     NSMutableArray *pre_board = [[NSUserDefaults standardUserDefaults] objectForKey:@"board"];
     if ([pre_board isKindOfClass:[NSArray class]] && pre_board.count == 9) {
         self.board = [pre_board mutableCopy];
-        self.currentPlayer = [[[NSUserDefaults standardUserDefaults] objectForKey:@"currrentPlayer"] integerValue];
+        self.currentPlayer = (player)[[[NSUserDefaults standardUserDefaults] objectForKey:@"currrentPlayer"] integerValue];
         if (self.delegate) {
             [self.delegate gameDidLoad];
         }
