@@ -53,12 +53,12 @@
     skView.ignoresSiblingOrder = YES;
     
     // Create and configure the scene.
-    self.board = [GameBoardViewController unarchiveFromFile:@"GameScene"];
-    self.board.scaleMode = SKSceneScaleModeAspectFill;
-    self.board.vc = self;
+    self.boardViewController = [GameBoardViewController unarchiveFromFile:@"GameScene"];
+    self.boardViewController.scaleMode = SKSceneScaleModeAspectFill;
+    self.boardViewController.vc = self;
     
     // Present the scene.
-    [skView presentScene:self.board];
+    [skView presentScene:self.boardViewController];
     
     
     // Load Game Model
@@ -125,7 +125,7 @@
 
 - (void)player:(player)player didPlayAtSpace:(boardSpace)spaceNumber
 {
-    [self.board setBoardSpace:spaceNumber to:player];
+    [self.boardViewController setBoardSpace:spaceNumber to:player];
         self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",
                                    (self.game.currentPlayer==playerO ? @"O" : @"X")];
 
@@ -151,7 +151,7 @@
                                    (self.game.currentPlayer==playerO ? @"O" : @"X")];
     }
     
-    [self.board resetBoard];
+    [self.boardViewController resetBoard];
     switch (arc4random()%2) {
         case 0:
             [self playSoundWithOfThisFile:@"Reset58.wav"];
@@ -177,7 +177,7 @@
     
     for (int i = 0; i<self.game.board.count; i++) {
         NSNumber *space = self.game.board[i];
-        [self.board setBoardSpace:i to:[space integerValue]];
+        [self.boardViewController setBoardSpace:i to:[space integerValue]];
     }
 }
 
@@ -185,7 +185,7 @@
 {
     if (winningPlayer == Tie) {
         self.turnIndicator.text = [NSString stringWithFormat:@"Tie, Everyone Wins/Loses!"];        
-        [self.board destroyBoard];
+        [self.boardViewController destroyBoard];
         [self playSoundWithOfThisFile:@"Win60_louder.wav"];
     } else {
         self.turnIndicator.text = [NSString stringWithFormat:@"%@ Wins!",(winningPlayer==playerO ? @"O" : @"X")];

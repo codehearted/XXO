@@ -20,7 +20,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *turnIndicator;
 @property (strong, nonatomic) IBOutlet UIButton *resetButton;
 @property (strong, nonatomic) XXOGame *game;
-@property (strong, nonatomic) GameBoardViewController *board;
+@property (strong, nonatomic) GameBoardViewController *boardViewController;
 @property (strong, nonatomic) AVAudioPlayer *audioPlayerObj;
 
 - (IBAction)resetGameButtonPressed;
