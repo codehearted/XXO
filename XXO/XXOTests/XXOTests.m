@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "XXOGame.h"
+#import "XXOGameObjC.h"
 
 @interface XXOTests : XCTestCase
 

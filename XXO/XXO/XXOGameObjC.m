@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Paul Jacobs. All rights reserved.
 //
 
-#import "XXOGame.h"
+#import "XXOGameObjC.h"
 
 #pragma mark -
 
-@implementation XXOGame
+@implementation XXOGameObjC
 
 #pragma mark Setup
 - (instancetype)initWithDelegate:(id<XXOGameDelegate>)del

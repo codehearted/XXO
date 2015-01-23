@@ -62,7 +62,7 @@
     
     
     // Load Game Model
-    self.game = [[XXOGame alloc] initWithDelegate:self];
+    self.game = [[XXOGameObjC alloc] initWithDelegate:self];
     [self.game loadGame];
     self.soundsEnabled = YES;
     

@@ -38,7 +38,7 @@ typedef enum boardSpace {
 @end
 
 #pragma mark -
-@interface XXOGame : NSObject
+@interface XXOGameObjC : NSObject
 
 #pragma mark Game Data
 @property (strong, nonatomic)   NSMutableArray *board;

@@ -7,7 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "XXOGame.h"
+#import "XXOGameObjC.h"
 
 @class GameViewController;
 
