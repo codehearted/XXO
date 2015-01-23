@@ -27,36 +27,51 @@ enum boardSpace : Int {
     case lowerRight = 8
 }
 
-protocol XXOGameDelegate {
-    func playerDidPlayAtSpace(p:player, space:boardSpace)
+@objc protocol XXOGameDelegate {
+    func playerDidPlayAtSpace(player:Int, space:Int)
     func gameDidReset()
     func gameDidLoad()
-    func gameOverWithWinner(p:player)
+    func gameOverWithWinner(player:Int)
 }
 
-@objc class XXOGame
+@objc class XXOGame : NSObject
 {
     var board : Array<player> = []
     var currentPlayer : player = .blank
     var delegate : XXOGameDelegate
     
-    init(d:XXOGameDelegate)
+    init(delegate:XXOGameDelegate)
     {
-        delegate = d
+        self.delegate = delegate
+        super.init()
         resetGame()
     }
     
-    func playAtSpace(space:boardSpace) -> player
+    func getCurrentPlayer() -> Int
+    { // Convienience func for objC
+        return currentPlayer.rawValue
+    }
+    
+    func setCurrentPlayer(newCurrentPlayer:Int)
     {
-        if (space.rawValue <= 8 &&
-            board[space.rawValue] == .blank &&
+        currentPlayer = player(rawValue: newCurrentPlayer)!
+    }
+    
+    func getBoardContentAtSpace(space:Int) -> Int {
+        return board[space].rawValue
+    }
+    
+    func playAtSpace(space:Int) -> Int
+    {
+        if (space <= 0 && space <= 8 &&
+            board[space] == .blank &&
             currentPlayer != .blank) {
             
             switch (currentPlayer) {
                 case .playerX, .playerO:
-                    board[space.rawValue] = currentPlayer;
+                    board[space] = currentPlayer;
                     currentPlayer = (currentPlayer == .playerX ? .playerO : .playerX);
-                    delegate.playerDidPlayAtSpace(currentPlayer, space: space)
+                    delegate.playerDidPlayAtSpace(currentPlayer.rawValue, space: space)
             default:
                 // ignore attempts to play when game is not being played
                 break
@@ -65,10 +80,10 @@ protocol XXOGameDelegate {
         
         let winningPlayer = checkForWin()
         if (winningPlayer != .blank) {
-            delegate.gameOverWithWinner(winningPlayer)
+            delegate.gameOverWithWinner(winningPlayer.rawValue)
         }
         saveGame()
-        return winningPlayer;
+        return winningPlayer.rawValue;
     }
     
     
@@ -124,13 +139,15 @@ protocol XXOGameDelegate {
             board[boardSpace.upperRight.rawValue] != player.blank)
         {   // Diagonal Upper Right <-> Lower Left Winner
             winningPlayer = self.board[boardSpace.upperRight.rawValue]
-        } else if (( // had to break up this expression because swift can't handle it as one piece yet.
-            board[0] != player.blank &&
-            board[1] != player.blank ) && (
-            board[2] != player.blank &&
-            board[3] != player.blank ) && (
-            board[4] != player.blank &&
-            board[5] != player.blank ))
+        } else
+            
+        if (( // had to break up this expression because swift can't handle it as one piece yet.
+            board[0] != .blank &&
+            board[1] != .blank ) && (
+            board[2] != .blank &&
+            board[3] != .blank ) && (
+            board[4] != .blank &&
+            board[5] != .blank ))
         {
             if (board[6] != player.blank &&
                 board[7] != player.blank &&
@@ -176,7 +193,11 @@ protocol XXOGameDelegate {
         pre_board = def.objectForKey("board") as [Int]
         if (pre_board.count == 9) {
             for index in 0..<9 {
-                board[index] = player(rawValue: index)!
+                if let val = player(rawValue: pre_board[index]) {
+                    board[index] = val
+                } else {
+                    board[index] = player.blank
+                }
             }
             currentPlayer = player(rawValue: def.integerForKey("currentPlayer"))!
         } else {

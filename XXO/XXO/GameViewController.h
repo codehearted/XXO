@@ -14,7 +14,7 @@
 #import "XXO-Swift.h"
 #import "XXOGameObjC.h"
 
-@interface GameViewController : UIViewController <XXOGameDelegateObjc>
+@interface GameViewController : UIViewController <XXOGameDelegate>
 
 @property (assign) BOOL showDebugInfo;
 @property (assign) BOOL soundsEnabled;

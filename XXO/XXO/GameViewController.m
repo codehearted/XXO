@@ -62,8 +62,8 @@
     
     
     // Load Game Model
-    self.gameObjC = [[XXOGameObjC alloc] initWithDelegate:self];
-    [self.gameObjC loadGame];
+    self.game = [[XXOGame alloc] initWithDelegate:self];
+    [self.game loadGame];
     self.soundsEnabled = YES;
     
 }
@@ -92,13 +92,13 @@
 
 - (IBAction)resetGameButtonPressed
 {
-    [self.gameObjC resetGame];
+    [self.game resetGame];
 }
 
 - (void)currentPlayerPlayedAtSpace:(boardSpace)spaceNumber
 {
-    if (self.gameObjC.currentPlayer != blank) {
-        [self.gameObjC playAtSpace:spaceNumber];
+    if ([self.game getCurrentPlayer] != blank) {
+        [self.game playAtSpace:spaceNumber];
     }
 }
 
@@ -122,12 +122,15 @@
 }
 
 #pragma mark Game Delegate Callbacks
-
-- (void)player:(player)player didPlayAtSpace:(boardSpace)spaceNumber
+//- (void)player:(player)player didPlayAtSpace:(boardSpace)space
+- (void)playerDidPlayAtSpace:(NSInteger)player space:(NSInteger)space;
 {
-    [self.boardViewController setBoardSpace:spaceNumber to:player];
-        self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",
-                                   (self.gameObjC.currentPlayer==playerO ? @"O" : @"X")];
+    // We have to ignore the following warning.. the suggested fixes crash it:
+    //    [self.boardViewController setBoardSpace:(boardSpace)space to:(player)player:player];
+    [self.boardViewController setBoardSpace:space to:player];
+    
+    self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",
+                                ([self.game getCurrentPlayer]== playerO ? @"O" : @"X")];
 
     switch (arc4random()%2) {
         case 0:
@@ -144,11 +147,11 @@
 
 - (void)gameDidReset
 {
-    if (self.gameObjC.currentPlayer == blank) {
+    if ([self.game getCurrentPlayer] == blank) {
         self.turnIndicator.text = @"Tap to Start (O's Turn)";
     } else {
         self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",
-                                   (self.gameObjC.currentPlayer==playerO ? @"O" : @"X")];
+                                   ([self.game getCurrentPlayer]==playerO ? @"O" : @"X")];
     }
     
     [self.boardViewController resetBoard];
@@ -168,20 +171,20 @@
 
 - (void)gameDidLoad
 {
-    if (self.gameObjC.currentPlayer == blank) {
+    if ([self.game getCurrentPlayer] == blank) {
         self.turnIndicator.text = @"Tap Reset to Start";
     } else {
         self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",
-                                   (self.gameObjC.currentPlayer==playerO ? @"O" : @"X")];
+                                   ([self.game getCurrentPlayer]==playerO ? @"O" : @"X")];
     }
     
-    for (int i = 0; i<self.gameObjC.board.count; i++) {
-        NSNumber *space = self.gameObjC.board[i];
-        [self.boardViewController setBoardSpace:i to:(player)[space integerValue]];
+    for (int i = 0; i<9; i++) {
+        [self.boardViewController setBoardSpace:i
+                                             to:(player)[self.game getBoardContentAtSpace:i]];
     }
 }
 
-- (void)gameOverWithWinner:(player)winningPlayer
+- (void)gameOverWithWinner:(NSInteger)winningPlayer
 {
     if (winningPlayer == Tie) {
         self.turnIndicator.text = [NSString stringWithFormat:@"Tie, Everyone Wins/Loses!"];        
@@ -191,7 +194,6 @@
         self.turnIndicator.text = [NSString stringWithFormat:@"%@ Wins!",(winningPlayer==playerO ? @"O" : @"X")];
         [self playSoundWithOfThisFile:@"Win23.wav"];
     }
-    self.gameObjC.currentPlayer = blank;
+    [self.game setCurrentPlayer:winningPlayer];
 }
-
 @end
