@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Paul Jacobs. All rights reserved.
 //
 
-#import "GameBoard.h"
+#import "GameBoardViewController.h"
 #import "GameViewController.h"
 
-@implementation GameBoard
+@implementation GameBoardViewController
 
 SKTexture *textureX;
 SKTexture *textureO;
@@ -18,7 +18,7 @@ NSMutableArray *stdBoardPosition;
 
 -(void)didMoveToView:(SKView *)view {
     SKNode *grid = [self childNodeWithName:@"grid"];
-    self.board = @[ [grid childNodeWithName:@"0"],
+    self.board = @[ [grid childNodeWithName:@"0"],    
                     [grid childNodeWithName:@"1"],
                     [grid childNodeWithName:@"2"],
 

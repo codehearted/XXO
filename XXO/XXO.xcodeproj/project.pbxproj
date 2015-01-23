@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		DA39D9491A6D535E0077B765 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D9481A6D535E0077B765 /* main.m */; };
 		DA39D94C1A6D535E0077B765 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D94B1A6D535E0077B765 /* AppDelegate.m */; };
-		DA39D94F1A6D535E0077B765 /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D94E1A6D535E0077B765 /* GameBoard.m */; };
+		DA39D94F1A6D535E0077B765 /* GameBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D94E1A6D535E0077B765 /* GameBoardViewController.m */; };
 		DA39D9511A6D535E0077B765 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA39D9501A6D535E0077B765 /* GameScene.sks */; };
 		DA39D9541A6D535E0077B765 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39D9531A6D535E0077B765 /* GameViewController.m */; };
 		DA39D9571A6D535E0077B765 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA39D9551A6D535E0077B765 /* Main.storyboard */; };
@@ -42,8 +42,8 @@
 		DA39D9481A6D535E0077B765 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DA39D94A1A6D535E0077B765 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DA39D94B1A6D535E0077B765 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DA39D94D1A6D535E0077B765 /* GameBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameBoard.h; sourceTree = "<group>"; };
-		DA39D94E1A6D535E0077B765 /* GameBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameBoard.m; sourceTree = "<group>"; };
+		DA39D94D1A6D535E0077B765 /* GameBoardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameBoardViewController.h; sourceTree = "<group>"; };
+		DA39D94E1A6D535E0077B765 /* GameBoardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameBoardViewController.m; sourceTree = "<group>"; };
 		DA39D9501A6D535E0077B765 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		DA39D9521A6D535E0077B765 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		DA39D9531A6D535E0077B765 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
@@ -104,8 +104,8 @@
 			children = (
 				DA39D94A1A6D535E0077B765 /* AppDelegate.h */,
 				DA39D94B1A6D535E0077B765 /* AppDelegate.m */,
-				DA39D94D1A6D535E0077B765 /* GameBoard.h */,
-				DA39D94E1A6D535E0077B765 /* GameBoard.m */,
+				DA39D94D1A6D535E0077B765 /* GameBoardViewController.h */,
+				DA39D94E1A6D535E0077B765 /* GameBoardViewController.m */,
 				DA39D9501A6D535E0077B765 /* GameScene.sks */,
 				DA39D9521A6D535E0077B765 /* GameViewController.h */,
 				DA39D9531A6D535E0077B765 /* GameViewController.m */,
@@ -261,7 +261,7 @@
 				DA39D9541A6D535E0077B765 /* GameViewController.m in Sources */,
 				DA39D9781A6D676C0077B765 /* XXOGame.m in Sources */,
 				DA39D94C1A6D535E0077B765 /* AppDelegate.m in Sources */,
-				DA39D94F1A6D535E0077B765 /* GameBoard.m in Sources */,
+				DA39D94F1A6D535E0077B765 /* GameBoardViewController.m in Sources */,
 				DA39D9491A6D535E0077B765 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

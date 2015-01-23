@@ -7,7 +7,7 @@
 //
 
 #import "GameViewController.h"
-#import "GameBoard.h"
+#import "GameBoardViewController.h"
 
 @implementation SKScene (Unarchive)
 
@@ -53,7 +53,7 @@
     skView.ignoresSiblingOrder = YES;
     
     // Create and configure the scene.
-    self.board = [GameBoard unarchiveFromFile:@"GameScene"];
+    self.board = [GameBoardViewController unarchiveFromFile:@"GameScene"];
     self.board.scaleMode = SKSceneScaleModeAspectFill;
     self.board.vc = self;
     
