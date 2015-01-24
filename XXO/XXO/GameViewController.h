@@ -12,7 +12,7 @@
 
 #import "GameBoardViewController.h"
 #import "XXO-Swift.h"
-#import "XXOGameObjC.h"
+// #import "XXOGameObjC.h" // No longer used
 
 @interface GameViewController : UIViewController <XXOGameDelegate>
 
@@ -20,7 +20,7 @@
 @property (assign) BOOL soundsEnabled;
 @property (strong, nonatomic) IBOutlet UILabel *turnIndicator;
 @property (strong, nonatomic) IBOutlet UIButton *resetButton;
-@property (strong, nonatomic) XXOGameObjC *gameObjC;
+// @property (strong, nonatomic) XXOGameObjC *gameObjC;
 @property (strong, nonatomic) XXOGame *game;
 @property (strong, nonatomic) GameBoardViewController *boardViewController;
 @property (strong, nonatomic) AVAudioPlayer *audioPlayerObj;
