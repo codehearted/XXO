@@ -30,12 +30,10 @@
 {
     if (spaceNumber <= 8 && [self.board[spaceNumber] integerValue] == blank && self.currentPlayer != blank) {
         if (self.currentPlayer == playerX) {
-            //            self.board[spaceNumber] = [NSNumber numberWithInt:playerX];
             [self.board setObject:[NSNumber numberWithInt:playerX] atIndexedSubscript:spaceNumber];
             self.currentPlayer = playerO;
             [self.delegate player:playerX didPlayAtSpace:spaceNumber];
         } else if (self.currentPlayer == playerO) {
-            //self.board[spaceNumber] = [NSNumber numberWithInt:playerO];
             [self.board setObject:[NSNumber numberWithInt:playerO] atIndexedSubscript:spaceNumber];
             self.currentPlayer = playerX;
             [self.delegate player:playerO didPlayAtSpace:spaceNumber];

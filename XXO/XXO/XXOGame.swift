@@ -63,15 +63,15 @@ enum boardSpace : Int {
     
     func playAtSpace(space:Int) -> Int
     {
-        if (space <= 0 && space <= 8 &&
+        if (space >= 0 && space <= 8 &&
             board[space] == .blank &&
             currentPlayer != .blank) {
             
             switch (currentPlayer) {
                 case .playerX, .playerO:
                     board[space] = currentPlayer;
-                    currentPlayer = (currentPlayer == .playerX ? .playerO : .playerX);
                     delegate.playerDidPlayAtSpace(currentPlayer.rawValue, space: space)
+                    currentPlayer = (currentPlayer == .playerX ? .playerO : .playerX);
             default:
                 // ignore attempts to play when game is not being played
                 break
@@ -81,6 +81,7 @@ enum boardSpace : Int {
         let winningPlayer = checkForWin()
         if (winningPlayer != .blank) {
             delegate.gameOverWithWinner(winningPlayer.rawValue)
+            currentPlayer = .blank
         }
         saveGame()
         return winningPlayer.rawValue;

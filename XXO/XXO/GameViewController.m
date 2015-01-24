@@ -130,7 +130,7 @@
     [self.boardViewController setBoardSpace:space to:player];
     
     self.turnIndicator.text = [NSString stringWithFormat:@"%@'s Turn",
-                                ([self.game getCurrentPlayer]== playerO ? @"O" : @"X")];
+                                (player == playerX ? @"O" : @"X")];
 
     switch (arc4random()%2) {
         case 0:
