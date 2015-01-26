@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA7B0A421A762891003A3F5F /* Hit_Hurt12.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA7B0A411A762891003A3F5F /* Hit_Hurt12.wav */; };
+		DA7B0A441A76289D003A3F5F /* Hit_Hurt13.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA7B0A431A76289D003A3F5F /* Hit_Hurt13.wav */; };
+		DA7B0A461A7628A3003A3F5F /* Win23.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA7B0A451A7628A3003A3F5F /* Win23.wav */; };
+		DA7B0A481A7628A8003A3F5F /* Win60_louder.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA7B0A471A7628A8003A3F5F /* Win60_louder.wav */; };
+		DA7B0A4A1A7628AE003A3F5F /* Reset58.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA7B0A491A7628AE003A3F5F /* Reset58.wav */; };
+		DA7B0A4C1A7628B4003A3F5F /* Reset64.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA7B0A4B1A7628B4003A3F5F /* Reset64.wav */; };
 		DAAA5CE11A75611700D3AC81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAA5CE01A75611700D3AC81 /* AppDelegate.swift */; };
 		DAAA5CE31A75611700D3AC81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAA5CE21A75611700D3AC81 /* ViewController.swift */; };
 		DAAA5CE61A75611700D3AC81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAAA5CE41A75611700D3AC81 /* Main.storyboard */; };
@@ -27,6 +33,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA7B0A411A762891003A3F5F /* Hit_Hurt12.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Hit_Hurt12.wav; sourceTree = "<group>"; };
+		DA7B0A431A76289D003A3F5F /* Hit_Hurt13.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Hit_Hurt13.wav; sourceTree = "<group>"; };
+		DA7B0A451A7628A3003A3F5F /* Win23.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Win23.wav; sourceTree = "<group>"; };
+		DA7B0A471A7628A8003A3F5F /* Win60_louder.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Win60_louder.wav; sourceTree = "<group>"; };
+		DA7B0A491A7628AE003A3F5F /* Reset58.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Reset58.wav; sourceTree = "<group>"; };
+		DA7B0A4B1A7628B4003A3F5F /* Reset64.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Reset64.wav; sourceTree = "<group>"; };
 		DAAA5CDB1A75611700D3AC81 /* XXO_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XXO_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAA5CDF1A75611700D3AC81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAAA5CE01A75611700D3AC81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +97,12 @@
 				DAAA5CE41A75611700D3AC81 /* Main.storyboard */,
 				DAAA5CE71A75611700D3AC81 /* Images.xcassets */,
 				DAAA5CE91A75611700D3AC81 /* LaunchScreen.xib */,
+				DA7B0A411A762891003A3F5F /* Hit_Hurt12.wav */,
+				DA7B0A431A76289D003A3F5F /* Hit_Hurt13.wav */,
+				DA7B0A451A7628A3003A3F5F /* Win23.wav */,
+				DA7B0A471A7628A8003A3F5F /* Win60_louder.wav */,
+				DA7B0A491A7628AE003A3F5F /* Reset58.wav */,
+				DA7B0A4B1A7628B4003A3F5F /* Reset64.wav */,
 				DAAA5CDE1A75611700D3AC81 /* Supporting Files */,
 			);
 			path = XXO_Swift;
@@ -195,9 +213,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7B0A481A7628A8003A3F5F /* Win60_louder.wav in Resources */,
+				DA7B0A461A7628A3003A3F5F /* Win23.wav in Resources */,
+				DA7B0A441A76289D003A3F5F /* Hit_Hurt13.wav in Resources */,
+				DA7B0A421A762891003A3F5F /* Hit_Hurt12.wav in Resources */,
 				DAAA5CE61A75611700D3AC81 /* Main.storyboard in Resources */,
+				DA7B0A4C1A7628B4003A3F5F /* Reset64.wav in Resources */,
 				DAAA5CEB1A75611700D3AC81 /* LaunchScreen.xib in Resources */,
 				DAAA5CE81A75611700D3AC81 /* Images.xcassets in Resources */,
+				DA7B0A4A1A7628AE003A3F5F /* Reset58.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

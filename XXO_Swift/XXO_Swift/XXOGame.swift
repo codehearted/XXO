@@ -8,36 +8,38 @@
 
 import Foundation
 
-enum player : Int {
-    case blank = 0
-    case playerX = 1
-    case playerO = 2
-    case Tie = 3
-}
-
-enum boardSpace : Int {
-    case upperLeft  = 0
-    case upperMid   = 1
-    case upperRight = 2
-    case centerLeft = 3
-    case centerMid  = 4
-    case centerRight = 5
-    case lowerLeft  = 6
-    case lowerMid   = 7
-    case lowerRight = 8
-}
-
-@objc protocol XXOGameDelegate {
-    func playerDidPlayAtSpace(player:Int, space:Int)
+protocol XXOGameDelegate {
+    func playerDidPlayAtSpace(player:XXOGame.player, space:XXOGame.boardSpace)
     func gameDidReset()
     func gameDidLoad()
-    func gameOverWithWinner(player:Int)
+    func gameOverWithWinner(player:XXOGame.player)
 }
 
-@objc class XXOGame : NSObject
+
+public class XXOGame : NSObject
 {
-    var board : Array<player> = []
-    var currentPlayer : player = .blank
+    enum player : Int {
+        case blank = 0
+        case playerX = 1
+        case playerO = 2
+        case Tie = 3
+    }
+    
+    enum boardSpace : Int {
+        case upperLeft  = 0
+        case upperMid   = 1
+        case upperRight = 2
+        case centerLeft = 3
+        case centerMid  = 4
+        case centerRight = 5
+        case lowerLeft  = 6
+        case lowerMid   = 7
+        case lowerRight = 8
+    }
+
+
+    private(set) var board : Array<player> = []
+    private(set) var currentPlayer : player = .blank
     var delegate : XXOGameDelegate
     
     init(delegate:XXOGameDelegate)
@@ -47,30 +49,30 @@ enum boardSpace : Int {
         resetGame()
     }
     
-    func getCurrentPlayer() -> Int
+    func getCurrentPlayer() -> player
     { // Convienience func for objC
-        return currentPlayer.rawValue
+        return currentPlayer
     }
     
-    func setCurrentPlayer(newCurrentPlayer:Int)
+    func setCurrentPlayer(newCurrentPlayer:player)
     {
-        currentPlayer = player(rawValue: newCurrentPlayer)!
+        currentPlayer = newCurrentPlayer
     }
     
-    func getBoardContentAtSpace(space:Int) -> Int {
-        return board[space].rawValue
+    func getBoardContentAtSpace(space:boardSpace) -> player {
+        return board[space.rawValue]
     }
     
-    func playAtSpace(space:Int) -> Int
+    func playAtSpace(space:boardSpace) -> player
     {
-        if (space >= 0 && space <= 8 &&
-            board[space] == .blank &&
-            currentPlayer != .blank) {
+        if (space.rawValue <= 8 &&
+            board[space.rawValue] == .blank &&
+            currentPlayer != player.blank) {
             
             switch (currentPlayer) {
                 case .playerX, .playerO:
-                    board[space] = currentPlayer;
-                    delegate.playerDidPlayAtSpace(currentPlayer.rawValue, space: space)
+                    board[space.rawValue] = currentPlayer;
+                    delegate.playerDidPlayAtSpace(currentPlayer, space: space)
                     currentPlayer = (currentPlayer == .playerX ? .playerO : .playerX);
             default:
                 // ignore attempts to play when game is not being played
@@ -80,11 +82,11 @@ enum boardSpace : Int {
         
         let winningPlayer = checkForWin()
         if (winningPlayer != .blank) {
-            delegate.gameOverWithWinner(winningPlayer.rawValue)
+            delegate.gameOverWithWinner(winningPlayer)
             currentPlayer = .blank
         }
         saveGame()
-        return winningPlayer.rawValue;
+        return winningPlayer;
     }
     
     
