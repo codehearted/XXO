@@ -30,9 +30,9 @@ class ViewController: UIViewController, XXOGameDelegate {
     
     var tiles : [UIButton!]
 
-    var blankImage  : UIImage//(named: "blank")
-    var xImage      : UIImage//(named: "X")
-    var oImage      : UIImage//(named: "O")
+    var blankImage  : UIImage
+    var xImage      : UIImage
+    var oImage      : UIImage
     
     // Game Model
     var game: XXOGame!;
@@ -77,6 +77,14 @@ class ViewController: UIViewController, XXOGameDelegate {
         return true
     }
     
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
+    
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.All.rawValue)
+    }
+    
     @IBAction func resetButtonPressed()
     {
         game.resetGame()
@@ -89,13 +97,13 @@ class ViewController: UIViewController, XXOGameDelegate {
             currentPlayerPlayedAt(XXOGame.boardSpace.upperLeft)
         case A1:
             currentPlayerPlayedAt(XXOGame.boardSpace.upperMid)
-        case A1:
+        case A2:
             currentPlayerPlayedAt(XXOGame.boardSpace.upperRight)
         case B0:
             currentPlayerPlayedAt(XXOGame.boardSpace.centerLeft)
         case B1:
             currentPlayerPlayedAt(XXOGame.boardSpace.centerMid)
-        case B1:
+        case B2:
             currentPlayerPlayedAt(XXOGame.boardSpace.centerRight)
         case C0:
             currentPlayerPlayedAt(XXOGame.boardSpace.lowerLeft)
@@ -136,13 +144,13 @@ class ViewController: UIViewController, XXOGameDelegate {
                     println("An error occured trying to set AVAudioSession active:\(e.localizedDescription)")
                 }
             }
-            var path = NSBundle.mainBundle().resourcePath
-            var soundURL = NSURL(fileURLWithPath:"\(path)/\(file)")
+            var path = NSBundle.mainBundle().resourcePath! + "/\(file)"
+            var soundURL = NSURL(string:path)
             if let checkedURL = soundURL {
                     var error: NSError?
-                    audioPlayer = AVAudioPlayer(contentsOfURL: soundURL, error: &error)
+                    audioPlayer = AVAudioPlayer(contentsOfURL: checkedURL, error: &error)
                     if let actualErr = error {
-                        println("An error occured trying to play sound \(soundURL):\(error)")
+                        println("An error occured trying to play sound \(checkedURL):\(error)")
                     } else {
                         audioPlayer!.play()
                     }
@@ -199,10 +207,13 @@ class ViewController: UIViewController, XXOGameDelegate {
         if game == nil || game.getCurrentPlayer() == XXOGame.player.blank {
             turnIndicator.text = "Tap to Start (O's Turn)"
         } else {
-            let plr = (game.getCurrentPlayer() == XXOGame.player.playerX ? "O" : "X")
+            let plr = (game.getCurrentPlayer() == XXOGame.player.playerO ? "O" : "X")
             turnIndicator.text = "\(plr)'s Turn"
         }
         
+        resetBoard()
+        let soundNum = Int(arc4random() % UInt32(resetSounds.count))
+        playSound(resetSounds[soundNum])
     }
 
     func gameDidLoad()
