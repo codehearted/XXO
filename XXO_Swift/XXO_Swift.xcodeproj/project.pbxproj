@@ -13,6 +13,7 @@
 		DAAA5CE81A75611700D3AC81 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAAA5CE71A75611700D3AC81 /* Images.xcassets */; };
 		DAAA5CEB1A75611700D3AC81 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAAA5CE91A75611700D3AC81 /* LaunchScreen.xib */; };
 		DAAA5CF71A75611700D3AC81 /* XXO_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAA5CF61A75611700D3AC81 /* XXO_SwiftTests.swift */; };
+		DAC116E31A76004800F677BF /* XXOGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC116E21A76004800F677BF /* XXOGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		DAAA5CF01A75611700D3AC81 /* XXO_SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XXO_SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAA5CF51A75611700D3AC81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAAA5CF61A75611700D3AC81 /* XXO_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XXO_SwiftTests.swift; sourceTree = "<group>"; };
+		DAC116E21A76004800F677BF /* XXOGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XXOGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				DAAA5CE01A75611700D3AC81 /* AppDelegate.swift */,
 				DAAA5CE21A75611700D3AC81 /* ViewController.swift */,
+				DAC116E21A76004800F677BF /* XXOGame.swift */,
 				DAAA5CE41A75611700D3AC81 /* Main.storyboard */,
 				DAAA5CE71A75611700D3AC81 /* Images.xcassets */,
 				DAAA5CE91A75611700D3AC81 /* LaunchScreen.xib */,
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAAA5CE31A75611700D3AC81 /* ViewController.swift in Sources */,
+				DAC116E31A76004800F677BF /* XXOGame.swift in Sources */,
 				DAAA5CE11A75611700D3AC81 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +409,7 @@
 				DAAA5CFC1A75611700D3AC81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DAAA5CFD1A75611700D3AC81 /* Build configuration list for PBXNativeTarget "XXO_SwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +418,7 @@
 				DAAA5CFF1A75611700D3AC81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

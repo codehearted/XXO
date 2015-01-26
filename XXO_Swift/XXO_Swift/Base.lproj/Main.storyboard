@@ -16,6 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cookies_bg_50" translatesAutoresizingMaskIntoConstraints="NO" id="C4V-Sd-D9d">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsf-NU-JhE">
                                 <rect key="frame" x="0.0" y="547" width="89" height="53"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
@@ -23,6 +26,14 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="X's Turn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVb-UJ-QhA">
+                                <rect key="frame" x="16" y="18" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42o-su-Aza">
                                 <rect key="frame" x="47" y="47" width="506" height="506"/>
                                 <subviews>
@@ -54,20 +65,31 @@
                                         <rect key="frame" x="336" y="336" width="150" height="150"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="X's Turn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVb-UJ-QhA">
-                                <rect key="frame" x="16" y="18" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="A0" destination="42o-su-Aza" id="lBt-X7-Lp9"/>
+                        <outlet property="A1" destination="kB2-7l-DwY" id="jzF-0Q-wIF"/>
+                        <outlet property="A2" destination="v1E-BV-ESG" id="Y4S-NH-ar4"/>
+                        <outlet property="B0" destination="RLB-Sp-Rjg" id="YU6-xa-bCr"/>
+                        <outlet property="B1" destination="h7p-8n-XjO" id="eQb-wW-b7c"/>
+                        <outlet property="B2" destination="XMB-Fa-Brw" id="cux-6Q-Z06"/>
+                        <outlet property="C0" destination="tQd-hA-Bne" id="nGH-FJ-6Um"/>
+                        <outlet property="C1" destination="T2P-DQ-FRH" id="wq9-EU-wV6"/>
+                        <outlet property="C2" destination="Zoa-FM-jIB" id="0zb-e6-0RH"/>
+                        <outlet property="resetButton" destination="Tsf-NU-JhE" id="wyo-GE-R9d"/>
+                        <outlet property="turnIndicatior" destination="oVb-UJ-QhA" id="rRZ-Ox-Bq5"/>
+                        <outletCollection property="a1" destination="RfI-i5-LoM" id="FNB-Xk-KyP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="cookies_bg_50" width="1156" height="768"/>
+    </resources>
 </document>
