@@ -173,7 +173,7 @@ protocol XXOGameDelegate {
     {
         var pre_board : [Int] = []
         let def = NSUserDefaults.standardUserDefaults()
-        pre_board = def.objectForKey("board") as [Int]
+        pre_board = def.objectForKey("board") as! [Int]
         if (pre_board.count == 9) {
             for index in 0..<9 {
                 board[index] = player(rawValue: index)!
