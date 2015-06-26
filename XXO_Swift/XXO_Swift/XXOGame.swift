@@ -193,7 +193,7 @@ public class XXOGame : NSObject
     {
         var pre_board : [Int] = []
         let def = NSUserDefaults.standardUserDefaults()
-        pre_board = def.objectForKey("board") as [Int]
+        pre_board = def.objectForKey("board") as! [Int]
         if (pre_board.count == 9) {
             for index in 0..<9 {
                 if let val = player(rawValue: pre_board[index]) {
